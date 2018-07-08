@@ -23,7 +23,7 @@ function extension()
             if (element['quantity_available'] == 1)
                 content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copy still available</h3>';
             else if(element['quantity_available'] == null)
-                content += '<h3 class="tags-inline-label">' + element['title'] + ': infinite copies could still be available for what I know (couldn\'t read the number ;b)</h3>';
+                content += '<h3 class="tags-inline-label">' + element['title'] + ': infinite copies could still be available as far as I know (couldn\'t read the number ;b)</h3>';
             else
                 content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copies still available</h3>';
         });
