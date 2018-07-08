@@ -22,6 +22,8 @@ function extension()
             console.log(element['title'] + ': ' + element['quantity_available'] + ' copies still available  ');
             if (element['quantity_available'] == 1)
                 content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copy still available</h3>';
+            else if(element['quantity_available'] == null)
+                content += '<h3 class="tags-inline-label">' + element['title'] + ': infinite copies still available (couldn\'t read the number...)</h3>';
             else
                 content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copies still available</h3>';
         });
