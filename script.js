@@ -20,7 +20,10 @@ function extension()
 
         TralbumData['packages'].forEach(element => {
             console.log(element['title'] + ': ' + element['quantity_available'] + ' copies still available  ');
-            content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copies still available</h3>';
+            if (element['quantity_available'] == 1)
+                content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copy still available</h3>';
+            else
+                content += '<h3 class="tags-inline-label">' + element['title'] + ': ' + element['quantity_available'] + ' copies still available</h3>';
         });
 
         quantity.innerHTML= '<h3 class="tags-inline-label">' + content + '</h3>';
