@@ -7,12 +7,12 @@ An extension for Google Chrome that tells you the number of remaining copies of 
 
  
 
-First download it and unpack it.
+- First download it and unpack it.
 
-Then you go to the Chrome menu/More tools/Extensions.
+- Then you go to the _Chrome menu/More tools/Extensions_.
 
-Once you are there you enable developer mode in the top right corner.
+- Once you are there you enable developer mode in the top right corner.
 
-Then you click on load unpacked and navigate to the folder of the unpacked extension.
+- Then you click on load unpacked and navigate to the folder of the unpacked extension.
 
-It should now be enabled!
+**It should now be enabled!**
