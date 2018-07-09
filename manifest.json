@@ -1,11 +1,10 @@
 {
     "manifest_version": 2,
     "name": "bandcamp remaining copies",
-    "version": "0.4",
+    "version": "0.5",
     "content_scripts":[
         {
             "matches": ["*://*/*"],
-            "homepage_url": "https://github.com/pozz94/BandcampChromeExtension",
             "js": ["content.js"]
         }
     ],
