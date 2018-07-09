@@ -1,7 +1,9 @@
 # BandcampChromeExtension
 An extension for Google Chrome that tells you the number of remaining copies of a record on bandcamp.
 
+
 To install:
+
 
 First download it and unpack it.
 
