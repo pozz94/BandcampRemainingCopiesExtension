@@ -1,4 +1,4 @@
-# BandcampChromeExtension
+# BandcampRemainingCopiesExtension
 A browser extension that tells you the number of remaining copies of a record on bandcamp.
 
  
