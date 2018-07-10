@@ -16,7 +16,7 @@ A browser extension that tells you the number of remaining copies of a record on
 **or better yet:**
 - First download it and unpack it.
 
-- Then you go to the _Chrome menu/More tools/Extensions_.
+- Then go to the _Chrome menu/More tools/Extensions_.
 
 - Once you are there you enable developer mode in the top right corner.
 
@@ -31,7 +31,7 @@ A browser extension that tells you the number of remaining copies of a record on
 
 - First download it and unpack it.
 
-- Then you go to about:debugging from the search bar.
+- Then go to about:debugging from the search bar.
 
 - Click on _Load Temporary Add-on_.
 
