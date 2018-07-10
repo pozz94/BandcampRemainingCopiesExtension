@@ -12,7 +12,7 @@ function extension()
 		if(TralbumData.packages != null && typeof TralbumData.packages !== "undefined")
 		{
 			window.addEventListener('inventoryUpdate', debounceEvent(() => {
-				console.log('Inventory update, building new HTML for items in stock');
+				console.log('[BANDCAMP REMAINING COPIES EXTENSION]: Inventory update, building new HTML for items in stock');
 				buildHTML(TralbumData.packages, content, quantity);
 			}, 100));
 			window.dispatchEvent(update);
@@ -35,7 +35,7 @@ function buildHTML(parent, html, elmt)
 		if (number == 0)
 			html.item[index] = '<span style="font-style: italic; font-weight:normal">no copies available</span>';
 		else if(number == null)
-			html.item[index] = '<span style="font-style: italic; font-weight:normal">no availability info or &infin;</span>';
+			html.item[index] = '<span style="font-style: italic; font-weight:normal">no availability info</span>';
 			else if (number == 1)
 			html.item[index] = '<span class="notable">1</span><span style="font-weight:normal"> copy in stock</span>';
 		else
