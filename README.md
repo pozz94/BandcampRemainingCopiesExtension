@@ -31,6 +31,6 @@ A browser extension that tells you the number of remaining copies of a record on
 **To install on Firefox:**
 
 - https://addons.mozilla.org/firefox/addon/bandcamp-stock/
-- install
+- install.
 
 **Done!**
