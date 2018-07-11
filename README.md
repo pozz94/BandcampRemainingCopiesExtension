@@ -30,13 +30,7 @@ A browser extension that tells you the number of remaining copies of a record on
 
 **To install on Firefox:**
 
-- First download it and unpack it.
+- https://addons.mozilla.org/firefox/addon/bandcamp-stock/
+- install
 
-- Then go to about:debugging from the search bar.
-
-- Click on _Load Temporary Add-on_.
-
-- Select the manifest file from the extension folder.
-
-
-**It should now be enabled!**
+**Done!**
