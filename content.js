@@ -5,8 +5,8 @@ window.addEventListener("load", function(){
 		let logo=document.getElementById("footer-logo").getAttribute('href');
 		if (logo.indexOf("bandcamp.com"))
 		{
-			console.log("[BANDCAMP REMAINING COPIES EXTENSION]: this is Bandcamp!");
-			console.log('[BANDCAMP REMAINING COPIES EXTENSION]: bandcamp remaining copies extension executing');
+			console.log("[BANDCAMP STOCK EXTENSION]: this is Bandcamp!");
+			console.log('[BANDCAMP STOCK EXTENSION]: bandcamp remaining copies extension executing');
 
 			var s = document.createElement('script');
 			s.src = chrome.extension.getURL('script.js');
