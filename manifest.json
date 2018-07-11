@@ -1,7 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "bandcamp remaining copies",
-	"version": "0.6",
+	"version": "0.7",
+	"icons": { "512": "bc_stock_512.png" },
 	"content_scripts":[
 		{
 			"matches": ["*://*/*"],

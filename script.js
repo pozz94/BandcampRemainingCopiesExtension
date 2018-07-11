@@ -2,65 +2,50 @@ let update = new Event('inventoryUpdate');
 
 function extension()
 {
-	let content = {item: [], value:''};
-	let quantity = document.createElement('div');
-
-	quantity.className = 'remainingQuantity buyItem';
-	quantity.style.width = "auto";
-
 	waitForVar('TralbumData', () => {
-		if(TralbumData.packages != null && typeof TralbumData.packages !== "undefined")
+		if(TralbumData.packages != null && typeof TralbumData.packages !== 'undefined')
 		{
-			window.addEventListener('inventoryUpdate', debounceEvent(() => {
-				console.log('[BANDCAMP REMAINING COPIES EXTENSION]: Inventory update, building new HTML for items in stock');
-				buildHTML(TralbumData.packages, content, quantity);
-			}, 100));
+			window.addEventListener('inventoryUpdate', debounceEvent(() => buildHTML(TralbumData.packages), 100));
 			window.dispatchEvent(update);
 		}
 	});
 }
 
-function buildHTML(parent, html, elmt)
+function buildHTML(parent)
 {
-	let index = 0;
+	console.log('[BANDCAMP REMAINING COPIES EXTENSION]: Inventory update, building new HTML for items in stock');
+
+	let elmt = e({'type': 'div', 'class': 'remainingQuantity buyItem', 'id':'BandcampRemainingCopiesExtension'});
 	parent.forEach(element => {
-		//watch variable to rebuild HTML in case it 
+		//watch variable to rebuild HTML in case the page updates
 		watchVariabile(element, 'quantity_available', () => {
 			window.dispatchEvent(update);
-			//buildHTML(parent, html, elmt);
 		});
 
-		let number=element.quantity_available;
+		let number = element.quantity_available;
+
+		let h3 = e({'type': 'h3'}, element.title, ': ');
+
+		let unavailable = {'type': 'span', 'style': 'font-style: italic; font-weight:normal'};
+		let boldRed = {'type': 'span', 'class': 'notable'};
+		let normal = {'type': 'span', 'style': 'font-weight:normal'};
 
 		if (number == 0)
-			html.item[index] = '<span style="font-style: italic; font-weight:normal">no copies available</span>';
+			h3.a(e(unavailable, 'no copies available'));
 		else if(number == null)
-			html.item[index] = '<span style="font-style: italic; font-weight:normal">no availability info</span>';
-			else if (number == 1)
-			html.item[index] = '<span class="notable">1</span><span style="font-weight:normal"> copy in stock</span>';
+			h3.a(e(unavailable, 'no availability info'));
+		else if (number == 1)
+			h3.a(e(boldRed, '1'), e(normal, ' copy in stock'));
 		else
-			html.item[index] = '<span class="notable">' + number + '</span><span style="font-weight:normal"> copies in stock</span>';
+			h3.a(e(boldRed, number), e(normal, ' copies in stock'));
 
-		html.item[index] = '<span class="lightweightBreak"></span><h3 class="tags-inline-label">' + element.title + ': '+ html.item[index] + '</h3>'
-		
-		index++;
-		if(index === TralbumData.packages.length)
-		{
-			appendToTitle(elmt, html);
-		}
+		elmt.a(e({'type': 'span', 'class': 'lightweightBreak'}), h3);
 	});
-}
 
-function appendToTitle(toAppend, HTML)
-{
-	HTML.item.forEach(element => HTML.value += element);
-	toAppend.innerHTML = HTML.value;
-	HTML.item = [];
-	HTML.value = '';
-	toAppend.onload = function() {
-		this.remove();
-	};
-	document.getElementById("name-section").appendChild(toAppend);
+	if(document.getElementById('BandcampRemainingCopiesExtension') != null && document.getElementById('BandcampRemainingCopiesExtension') !== 'undefined')
+		document.getElementById('BandcampRemainingCopiesExtension').remove();
+
+	document.getElementById('name-section').a(elmt);
 }
 
 function insertAfter(newNode, referenceNode) {
@@ -99,6 +84,48 @@ function waitForVar(variable, callback)
 			waitForVar(variable, callback);
 		}, 100);
 	}
+}
+
+function e(data, ...content)
+{
+	let elmt;
+
+	if (data.type)
+		elmt = document.createElement(data.type);
+	else
+		elmt = document.createElement('div');
+
+	if(data.id)
+		elmt.id = data.id;
+
+	if(data.class)
+		elmt.className = data.class;
+
+	if(data.style)
+		elmt.style.cssText = data.style;
+
+	elmt.a(...content);
+
+	return elmt;
+}
+
+HTMLElement.prototype.a = function(...toAppend){
+	let obj=this;
+	toAppend.forEach(element => {
+		if (typeof element == 'string' || element instanceof String || typeof element == 'number' || element instanceof Number)
+			obj.insertAdjacentText('beforeend', element);
+		else
+		{
+			obj.onload = function() {
+				this.remove();
+			};
+			obj.appendChild(element);
+		}
+	}
+)};
+
+HTMLElement.prototype.remove = function() {
+    this.parentElement.removeChild(this);
 }
 
 const debounceEvent = (callback, time = 250, interval) => 
